@@ -1,13 +1,26 @@
 package com.econome.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 import java.time.LocalDate;
 
+@Entity
 public class Transaction {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String description;
     private Double amount;
     private LocalDate date;
     private String type;
+
+    public Transaction() {
+    }
 
     public Transaction(Long id, String description, Double amount, LocalDate date, String type) {
         this.id = id;
@@ -18,13 +31,6 @@ public class Transaction {
     }
 
     // Getters and Setters
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getDescription() {
         return description;
