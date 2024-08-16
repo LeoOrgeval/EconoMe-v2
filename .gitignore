@@ -1,7 +1,0 @@
-.idea
-
-# Build files
-/backend/target/
-/backend/out/
-/frontend/node_modules/
-/frontend/dist/
