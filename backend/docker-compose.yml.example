@@ -1,0 +1,26 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:16
+    container_name: your_container_name
+    environment:
+      POSTGRES_USER: your_user
+      POSTGRES_PASSWORD: your_password
+      POSTGRES_DB: your_db
+    ports:
+      - "5432:5432"
+
+  app:
+    image: openjdk:17-jdk
+    container_name: your_container_name
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://your_host:5432/your_db
+      SPRING_DATASOURCE_USERNAME: your_user
+      SPRING_DATASOURCE_PASSWORD: your_password
+    depends_on:
+      - your_postgres_service
+    volumes:
+      - your_volume
+    entrypoint: ["java", "-jar", "/app.jar"]
+    ports:
+      - "9999:9999"
